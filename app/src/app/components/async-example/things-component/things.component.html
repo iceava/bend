@@ -1,7 +1,11 @@
 
 <article>
+  <app-area-component (sentAreas)="getAreasObservable($event)"></app-area-component>
   <ng-container *ngFor="let item of things | async">
     <ul>
+      <ng-container  *ngFor="let it of areas | async">
+        <li *ngIf="it.areaId === item.areaId">{{it.name}}</li>
+      </ng-container>
       <li>areaId: {{item.areaId}}</li>
       <li>countActive: {{item.countActive}}</li>
       <li>defaultSku: {{item.defaultSku}}</li>
