@@ -9,6 +9,7 @@ import {AreasModel} from '../../../shared/models/Areas-model';
    templateUrl: './area-component.component.html',
    styleUrls: ['./area-component.component.scss'],
 })
+
 export class AreaComponentComponent implements OnInit {
    @Output() sentAreas: EventEmitter<Observable<Array<AreasModel>>> = new EventEmitter<Observable<Array<AreasModel>>>();
 
