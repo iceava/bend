@@ -30,7 +30,7 @@ export class ThingComponentComponent implements AfterViewInit, OnDestroy {
          .pipe(takeUntil(this.destroy$))
          .subscribe((things) => {
            this.things = things
-           this.cdr.detectChanges()
+           this.cdr.markForCheck()
          });
    }
 

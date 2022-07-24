@@ -25,7 +25,7 @@ export class ThingsComponent implements AfterViewInit {
 
    getThings(): void {
       this.things = this.svc.getThings();
-      this.cdr.detectChanges()
+      this.cdr.markForCheck()
    }
 
    getAreasObservable(event: Observable<Array<AreasModel>>): any {
