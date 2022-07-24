@@ -1,0 +1,14 @@
+
+<article>
+  <ng-container *ngFor="let item of things | async">
+    <ul>
+      <li>areaId: {{item.areaId}}</li>
+      <li>countActive: {{item.countActive}}</li>
+      <li>defaultSku: {{item.defaultSku}}</li>
+      <li>id: {{item.id}}</li>
+      <li>joinedWith: {{item.joinedWith}}</li>
+      <li>sku: {{item.sku}}</li>
+      <li>status: {{item.status}}</li>
+    </ul>
+  </ng-container>
+</article>

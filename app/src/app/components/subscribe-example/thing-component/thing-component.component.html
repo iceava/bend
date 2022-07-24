@@ -1,0 +1,15 @@
+<main>
+  <app-areas-component (sentArea)="getArea($event)"></app-areas-component>
+  <ng-container *ngFor="let thing of things">
+    <ul>
+      <li>{{getZone(thing)!}}</li>
+      <li>areaId: {{thing.areaId}}</li>
+      <li>countActive: {{thing.countActive}}</li>
+      <li>defaultSku: {{thing.defaultSku}}</li>
+      <li>id: {{thing.id}}</li>
+      <li>joinedWith: {{thing.joinedWith}}</li>
+      <li>sku: {{thing.sku}}</li>
+      <li>status: {{thing.status}}</li>
+    </ul>
+  </ng-container>
+</main>
