@@ -1,11 +1,12 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {ThingsModel} from '../../../shared/models/Things-model';
 import {DataServiceService} from '../../../shared/service/data-service.service';
 import {Observable} from 'rxjs';
 import {AreasModel} from '../../../shared/models/Areas-model';
 
 @Component({
-   selector: 'app-things-component',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-things-component',
    templateUrl: './things.component.html',
    styleUrls: ['./things.component.scss'],
 })
@@ -14,7 +15,9 @@ export class ThingsComponent implements AfterViewInit {
 
    things!: Observable<Array<ThingsModel>>;
 
-   constructor(public svc: DataServiceService) {}
+   constructor(public svc: DataServiceService,
+               protected cdr: ChangeDetectorRef
+               ) {}
 
    ngAfterViewInit(): void {
       this.getThings();
@@ -22,6 +25,7 @@ export class ThingsComponent implements AfterViewInit {
 
    getThings(): void {
       this.things = this.svc.getThings();
+      this.cdr.detectChanges()
    }
 
    getAreasObservable(event: Observable<Array<AreasModel>>): any {

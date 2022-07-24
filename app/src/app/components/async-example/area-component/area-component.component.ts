@@ -1,10 +1,10 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {DataServiceService} from '../../../shared/service/data-service.service';
 import {Observable} from 'rxjs';
 import {AreasModel} from '../../../shared/models/Areas-model';
-import {find} from 'rxjs/operators';
 
 @Component({
+   changeDetection: ChangeDetectionStrategy.OnPush,
    selector: 'app-area-component',
    templateUrl: './area-component.component.html',
    styleUrls: ['./area-component.component.scss'],
