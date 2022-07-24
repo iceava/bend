@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-areas-component',
-  templateUrl: './areas.component.html',
-  styleUrls: ['./areas.component.scss']
+   selector: 'bend-areas-component',
+   templateUrl: './areas.component.html',
+   styleUrls: ['./areas.component.scss'],
 })
 export class AreasComponent implements OnInit {
+   constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+   ngOnInit(): void {}
 }
