@@ -17,4 +17,4 @@ const areasRoute: Routes = [
   imports: [RouterModule.forChild(areasRoute)],
   exports: [RouterModule],
 })
-export class AreasRoutingModule {}
+export class SubscribeExampleRoutingModule {}

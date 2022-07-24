@@ -12,4 +12,4 @@ import { ThingsComponent } from './things-component/things.component';
     CommonModule
   ]
 })
-export class ThingsModule { }
+export class AsyncExampleModule { }

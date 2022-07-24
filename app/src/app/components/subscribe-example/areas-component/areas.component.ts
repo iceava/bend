@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-   selector: 'bend-areas-component',
+   selector: 'bend-subscribe-example-component',
    templateUrl: './areas.component.html',
    styleUrls: ['./areas.component.scss'],
 })
