@@ -18,7 +18,7 @@ export class AreaComponentComponent implements OnInit {
       this.getArea();
    }
 
-   getArea(): any {
+  private getArea(): any {
       this.sentAreas.emit(this.svc.getAreas());
    }
 }

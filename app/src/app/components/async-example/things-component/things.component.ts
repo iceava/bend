@@ -23,13 +23,16 @@ export class ThingsComponent implements AfterViewInit {
       this.getThings();
    }
 
-   getThings(): void {
-      this.things = this.svc.getThings();
-      this.cdr.markForCheck()
-   }
 
-   getAreasObservable(event: Observable<Array<AreasModel>>): any {
+
+    getAreasObservable(event: Observable<Array<AreasModel>>): any {
       this.areas = event;
       return this.areas;
    }
+
+
+  private getThings(): void {
+    this.things = this.svc.getThings();
+    this.cdr.markForCheck()
+  }
 }

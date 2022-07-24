@@ -6,9 +6,10 @@ import {takeUntil} from 'rxjs/operators';
 import {ThingsModel} from '../../../shared/models/Things-model';
 
 @Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-thing-component',
+   changeDetection: ChangeDetectionStrategy.OnPush,
+   selector: 'app-thing-component',
    templateUrl: './thing-component.component.html',
+   styleUrls: ['./thing-component.component.scss'],
 })
 export class ThingComponentComponent implements AfterViewInit, OnDestroy {
    areas: Array<AreasModel> = new Array<AreasModel>();
@@ -16,34 +17,36 @@ export class ThingComponentComponent implements AfterViewInit, OnDestroy {
 
    destroy$: Subject<boolean> = new Subject<boolean>();
 
-   constructor(public svc: DataServiceService,
-               protected cdr: ChangeDetectorRef
-               ) {}
+   constructor(public svc: DataServiceService, protected cdr: ChangeDetectorRef) {}
 
    ngAfterViewInit(): void {
       this.getThings();
    }
 
-   getThings(): void {
-      this.svc
-         .getThings()
-         .pipe(takeUntil(this.destroy$))
-         .subscribe((things) => {
-           this.things = things
-           this.cdr.markForCheck()
-         });
-   }
+
+  getZone(th: ThingsModel): string {
+    return this.areas.find((el: AreasModel) => el.areaId === th.areaId)!.name;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+  }
+
+
 
    getArea($event: any): void {
       this.areas = $event;
    }
 
-   getZone(th: ThingsModel): string {
-      return this.areas.find((el: AreasModel) => el.areaId === th.areaId)!.name;
-   }
+  private getThings(): void {
+    this.svc
+      .getThings()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((things) => {
+        this.things = things;
+        this.cdr.markForCheck();
+      });
+  }
 
-   ngOnDestroy(): void {
-      this.destroy$.next(true);
-      this.destroy$.unsubscribe();
-   }
 }

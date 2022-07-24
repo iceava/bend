@@ -30,18 +30,21 @@ export class AreasComponent implements OnInit, OnDestroy {
       this.getAreas();
    }
 
-   getAreas(): void {
-      this.svc
-         .getAreas()
-         .pipe(takeUntil(this.destroy$))
-         .subscribe((areas: AreasModel[]) => {
-            this.sentArea.emit(areas);
-            this.cdr.detectChanges()
-         });
-   }
+
 
    ngOnDestroy(): void {
       this.destroy$.next(true);
       this.destroy$.unsubscribe();
    }
+
+
+  private getAreas(): void {
+    this.svc
+      .getAreas()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((areas: AreasModel[]) => {
+        this.sentArea.emit(areas);
+        this.cdr.detectChanges()
+      });
+  }
 }
